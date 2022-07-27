@@ -4,11 +4,15 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+require('dotenv').config();
 var cors = require("cors");
+
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var shariRouter = require("./routes/categories");
- 
+ var adminRouter = require("./routes/admin");
+ var pricesRouter = require("./routes/prices");
+
 var app = express();
 app.use(
   cors({
@@ -29,7 +33,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/categories", shariRouter);
-
+app.use("/admin",adminRouter);
+app.use("/prices",pricesRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -47,7 +52,7 @@ app.use(function (err, req, res, next) {
 });
 
 mongoose
-  .connect("mongodb://localhost/softunetask")
+  .connect(process.env.ADMIN_URI)
   .then(() => {
     console.log("connect succes");
   })

@@ -5,7 +5,7 @@ var signUp = require("../middleW/userC");
 var jwt = require("jsonwebtoken");
 /* GET users listing. */
 router.post("/signup",signUp, async function (req, res) {
-  
+   
   try {
     let check = await User.findOne({ email: req.body.email });
     if (check)
