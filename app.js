@@ -52,12 +52,12 @@ app.use(function (err, req, res, next) {
 });
 
 mongoose
-  .connect(process.env.ADMIN_URI)
+  .connect(process.env.ADMIN_URI,{useUnifiedTopology: true})
   .then(() => {
     console.log("connect succes");
   })
-  .catch(() => {
-    console.log("error");
+  .catch((err) => {
+    console.log("error:",err);
   });
 
 module.exports = app;

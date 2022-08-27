@@ -21,10 +21,10 @@ router.post("/signup",signUp, async function (req, res) {
 router.post("/login", async function (req, res) {
   try {
     let check = await User.findOne({ username: req.body.username });
-    if (!check) return res.status(400).send("User with given Email not exist");
+    if (!check) return res.send("Username not exist");
 
     if (req.body.password != check.password)
-      return res.status(400).send("password incorrect");
+      return res.status(400).send("Password incorrect");
 
     var token = jwt.sign({ id: check._id }, "mysecretkey");
 

@@ -3,7 +3,7 @@ var router = express.Router();
 var Categ = require("../models/categories.js");
 
 /* GET users listing. */
-router.post("/", async function (req, res) {
+router.post("/addproduct", async function (req, res) {
   console.log("hit");
   try {
     var categ = new Categ(req.body);
@@ -13,8 +13,8 @@ router.post("/", async function (req, res) {
     console.log(err);
   }
 });
-
-router.get("/", async function (req, res) {
+ 
+router.get("/getproduct", async function (req, res) {
   const use = await Categ.find();
   res.send(use);
 });
@@ -23,6 +23,7 @@ router.get("/:id", async function (req, res) {
   const use = await Categ.findById(req.params.id);
   res.send(use);
 });
+
 
 router.put("/:id", async function (req, res) {
   console.log("updating");

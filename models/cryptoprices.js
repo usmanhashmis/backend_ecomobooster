@@ -1,10 +1,16 @@
 var mongoose = require("mongoose");
 
 var schema = new mongoose.Schema({
-  Symbol:String,
-  coin_name: String,
-  current_price: String,
-});
-var cryptoprices = mongoose.model("Prices", schema);
+  coin_name: {
+    type: [String],
+    required: true
+ },
+ coin_address:{
+  type:String,
+  required:true
+ } 
+ 
+}); 
+var cryptopricess = mongoose.model("Prices", schema);
 
-module.exports.cryptoprices = cryptoprices;
+module.exports.Pricesm = cryptopricess;
