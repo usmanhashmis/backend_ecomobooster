@@ -7,8 +7,8 @@
     "start": "nodemon ./bin/www"
   },
   "engines": {
-    "node": ">=16.16.O", 
-    "npm": ">=8.11.0"
+    "node": "16.16.O", 
+    "npm": "8.11.0"
  },
   "dependencies": {
     "cookie-parser": "~1.4.4",
