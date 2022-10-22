@@ -15,11 +15,12 @@ router.post("/addproduct", async function (req, res) {
 });
  
 router.get("/getproduct", async function (req, res) {
+  console.log("product getting");
   const use = await Categ.find();
   res.send(use);
 });
 router.get("/:id", async function (req, res) {
-  console.log("getting");
+  console.log("One data getting");
   const use = await Categ.findById(req.params.id);
   res.send(use);
 });

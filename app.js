@@ -9,9 +9,11 @@ var cors = require("cors");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-var shariRouter = require("./routes/categories");
+var categoriesRouter = require("./routes/categories");
 var adminRouter = require("./routes/admin");
 var pricesRouter = require("./routes/prices");
+var orderrRouter = require("./routes/orderr");
+var completedRouter = require("./routes/completedd");
 
 var app = express();
 app.use(
@@ -32,9 +34,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/categories", shariRouter);
+app.use("/categories", categoriesRouter);
 app.use("/admin",adminRouter);
 app.use("/prices",pricesRouter);
+app.use("/orderr",orderrRouter);
+app.use("/completedd",completedRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -52,12 +56,23 @@ app.use(function (err, req, res, next) {
 });
 
 mongoose
-  .connect(process.env.ADMIN_URI,{useUnifiedTopology: true})
+  .connect(process.env.ADMIN_URI,{
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+    replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },})
   .then(() => {
     console.log("connect succes");
   })
   .catch((err) => {
-    console.log("error:",err);
+    console.log("error:",mongoose.connection.readyState);
   });
+
+  app.route('/')
+  .get(function (req, res) {
+    res.sendFile(process.cwd() + '/views/index.jade');
+});
 
 module.exports = app;
