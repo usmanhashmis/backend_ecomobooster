@@ -15,8 +15,8 @@ router.post("/addcontract", async function (req, res) {
 });
  
 router.get("/getaddress", async function (req, res) {
-  console.log("product getting");
-  const use = await Address.find();
+  console.log("address getting");
+  const use = await Address.find().sort({_id:-1}).limit(1);;
   res.send(use);
 });
 
