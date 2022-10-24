@@ -57,22 +57,16 @@ app.use(function (err, req, res, next) {
 
 mongoose
   .connect(process.env.ADMIN_URI,{
-    useFindAndModify: false,
+    
     useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
-    replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },})
+    })
   .then(() => {
     console.log("connect succes");
   })
   .catch((err) => {
-    console.log("error:",mongoose.connection.readyState);
+    console.log("error:",err);
   });
 
-  app.route('/')
-  .get(function (req, res) {
-    res.sendFile(process.cwd() + '/views/index.jade');
-});
+
 
 module.exports = app;
