@@ -19,4 +19,13 @@ router.post("/order", async function (req, res) {
     res.send(getAllOrder);
   });
 
+
+  router.put("/status/:id", async function (req, res) {
+    console.log("updating");
+    const use = await OrderM.findByIdAndUpdate(req.params.id, {status:"Order completed"});
+    await use.save();
+    console.log(use);
+    res.send(use);
+  
+  });
   module.exports = router;

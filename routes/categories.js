@@ -6,10 +6,17 @@ var Categ = require("../models/categories.js");
 router.post("/addproduct", async function (req, res) {
   console.log("hit");
   try {
+    var check_id = await Categ.find({product_id:req.body.product_id});
+    
+    if(check_id.length!=0){
+      return res.status(400).send({msg:"Id already exist"});
+    }
+    else{
     var categ = new Categ(req.body);
     await categ.save();
-    res.send(categ);
-  } catch (err) {
+    res.send(categ);}
+  }
+   catch (err) {
     console.log(err);
   }
 });

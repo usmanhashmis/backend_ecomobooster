@@ -9,6 +9,10 @@ const orderSchema = new mongoose.Schema({
     totalBill: Number,
     coin:String,
     address:String,
+    status:{
+        type: String,
+    default:"Not delivered"
+},
 
 })
 
