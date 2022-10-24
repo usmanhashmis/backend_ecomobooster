@@ -1,8 +1,14 @@
 var mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
-    productid:String,
-    status:Boolean
+    productid:{
+        type:String,
+        required:true
+      } ,
+      status:{
+        type:String,
+        required:true
+      },
 
 })
 
