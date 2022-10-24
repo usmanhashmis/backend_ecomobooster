@@ -23,8 +23,8 @@ router.post("/addproduct", async function (req, res) {
  
 router.get("/getproduct", async function (req, res) {
   console.log("product getting");
-  const use = await Categ.find();
-  res.send(use);
+  const getAllproduct = await Categ.find();
+  res.send(getAllproduct);
 });
 router.get("/:id", async function (req, res) {
   console.log("One data getting");

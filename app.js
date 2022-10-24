@@ -39,7 +39,6 @@ app.use("/categories", categoriesRouter);
 app.use("/admin",adminRouter);
 app.use("/prices",pricesRouter);
 app.use("/orderr",orderrRouter);
-
 app.use("/address",addressRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -71,12 +70,5 @@ mongoose
   .catch((err) => {
     console.log("error:",err);
   });
-
-//   app.set('port', process.env.PORT || 3000)
-
-//   app.listen(app.get('port'), () => {
-//   console.log(`Express server listening on port ${app.get('port')}`);
-// })
-
 
 module.exports = app;
