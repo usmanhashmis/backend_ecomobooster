@@ -68,7 +68,7 @@ mongoose
     console.log("connect succes");
     app.set('port', process.env.PORT || 3000)
     app.listen(app.get('port'), () => {
-      console.log(`listening for requests ${app.get('port')}`);
+      console.log(`Port: ${app.get('port')}`);
   })
   })
   .catch((err) => {
