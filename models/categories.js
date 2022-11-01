@@ -20,8 +20,7 @@ var schema = new mongoose.Schema({
   product_img:{
     type:String,
     required:true
-  } ,
-  pricesale:String,
+  }
 });
 var Categories = mongoose.model("Categories", schema);
 module.exports = Categories;

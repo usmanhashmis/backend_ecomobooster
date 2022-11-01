@@ -15,6 +15,8 @@ var pricesRouter = require("./routes/prices");
 var orderrRouter = require("./routes/orderr");
 
 var addressRouter = require("./routes/address");
+var msgRouter = require("./routes/msg");
+var giftoffRouter = require("./routes/giftoff");
 
 var app = express();
 app.use(
@@ -40,6 +42,8 @@ app.use("/admin",adminRouter);
 app.use("/prices",pricesRouter);
 app.use("/orderr",orderrRouter);
 app.use("/address",addressRouter);
+app.use("/msg",msgRouter);
+app.use("/giftoff",giftoffRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
