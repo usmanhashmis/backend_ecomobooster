@@ -13,7 +13,7 @@ const orderSchema = new mongoose.Schema({
         require:true,
     }],
     totalBill: Number,
-    coin:String,
+    coin:String, 
     address:String,
     status:{
         type: String,
