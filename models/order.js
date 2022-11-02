@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 const orderSchema = new mongoose.Schema({ 
       productdetail: [
         {
-          productid: {type:Number,
+          productid: {type:String,
             require:true},
           quantity:{ type:Number,
             require:true,},

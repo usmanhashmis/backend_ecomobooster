@@ -2,9 +2,13 @@ const Joi = require("joi");
 var mongoose = require("mongoose");
 
 var schema = new mongoose.Schema({
-  username: String,
-  email: String,
-  password: String,
+  username:
+  { type:String,
+    require:true},
+  email: { type:String,
+    require:true},
+  password: { type:String,
+    require:true},
 });
 var user = mongoose.model("User", schema);
 
