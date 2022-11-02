@@ -1,24 +1,24 @@
 var mongoose = require("mongoose");
 
-const orderSchema = new mongoose.Schema({
-  model: [
-    {
-      type: String,
-      parameters: [
+const orderSchema = new mongoose.Schema({ 
+      productdetail: [
         {
-          productid: Number,
-          quantity: Number,
-          price: Number,
+          productid: {type:Number,
+            require:true},
+          quantity:{ type:Number,
+            require:true,},
+          price:{ type:Number,
+            require:true,},
         },
+        
       ],
-    },
-  ],
   email: {
     type: String,
     require: true,
   },
   totalBill: {
     type: Number,
+    require:true,
   },
   coin: {
     type: String,
