@@ -66,7 +66,10 @@ mongoose
     })
   .then(() => {
     console.log("connect succes");
-    
+    app.set('port', process.env.PORT || 3000)
+    app.listen(app.get('port'), () => {
+      console.log(`Port: ${app.get('port')}`);
+  })
   })
   .catch((err) => {
     if(err){ console.error(err); return false;}
@@ -74,8 +77,5 @@ mongoose
   });
 
 
-  app.set('port', process.env.PORT || 3000)
-  app.listen(app.get('port'), () => {
-    console.log(`Port: ${app.get('port')}`);
-})
+ 
 module.exports = app;
