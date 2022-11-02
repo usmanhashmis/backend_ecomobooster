@@ -69,6 +69,7 @@ mongoose
     
   })
   .catch((err) => {
+    if(err){ console.error(err); return false;}
     console.log("error:",err);
   });
 
