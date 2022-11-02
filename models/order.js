@@ -1,25 +1,39 @@
 var mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
-    productid:[{
-        type:String,
-        require:true,
-    }],
-    quantity: Number,
-    email:String,
-    isPaid:Boolean,
-    price:[{
-        type:Number,
-        require:true,
-    }],
-    totalBill: Number,
-    coin:String, 
-    address:String,
-    status:{
-        type: String,
-    default:"Not delivered"
-},
+  model: [
+    {
+      type: String,
+      parameters: [
+        {
+          productid: Number,
+          quantity: Number,
+          price: Number,
+        },
+      ],
+    },
+  ],
+  email: {
+    type: String,
+    require: true,
+  },
+  totalBill: {
+    type: Number,
+  },
+  coin: {
+    type: String,
+    require: true,
+  },
+  address: {
+    type: String,
+    require: true,
+  },
+  isPaid: Boolean,
+  status: {
+    type: String,
+    default: "Not delivered",
+  },
+  time : { type : Date, default: Date.now }
+});
 
-})
-
-module.exports = mongoose.model('order', orderSchema)
+module.exports = mongoose.model("order", orderSchema);
