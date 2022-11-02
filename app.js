@@ -66,15 +66,15 @@ mongoose
     })
   .then(() => {
     console.log("connect succes");
-    app.set('port', process.env.PORT || 3000)
-    app.listen(app.get('port'), () => {
-      console.log(`Port: ${app.get('port')}`);
-  })
+    
   })
   .catch((err) => {
     console.log("error:",err);
   });
 
 
-
+  app.set('port', process.env.PORT || 3000)
+  app.listen(app.get('port'), () => {
+    console.log(`Port: ${app.get('port')}`);
+})
 module.exports = app;
