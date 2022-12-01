@@ -20,7 +20,16 @@ var schema = new mongoose.Schema({
   product_img:{
     type:String,
     required:true
-  }
+  },
+  product_stock:{
+    type:Number,
+    required:true
+  },
+  purchase_price:{
+    type:Number,
+    required:true
+  },
+
 });
 var Categories = mongoose.model("Categories", schema);
 module.exports = Categories;
