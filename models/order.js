@@ -9,6 +9,8 @@ const orderSchema = new mongoose.Schema({
             require:true,},
           price:{ type:Number,
             require:true,},
+          purchase_price:{ type:Number,
+              require:true,},
         },
         
       ],

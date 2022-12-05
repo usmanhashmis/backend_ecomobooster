@@ -23,7 +23,7 @@ var schema = new mongoose.Schema({
   },
   product_stock:{
     type:Number,
-    required:true
+    //required:true
   },
   purchase_price:{
     type:Number,

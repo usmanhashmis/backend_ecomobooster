@@ -35,7 +35,7 @@ router.get("/:id", async function (req, res) {
 
 router.put("/:id", async function (req, res) {
   console.log("updating");
-  console.log(req.body.name);
+  console.log(req.body);
   const edit = req.body;
   const use = await Categ.findByIdAndUpdate(req.params.id, edit);
   await use.save();
