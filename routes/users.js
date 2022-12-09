@@ -10,6 +10,9 @@ router.post("/signup",signUp, async function (req, res) {
     let check = await User.findOne({ email: req.body.email });
     if (check)
       return res.status(400).send("User with given Email already exist");
+      let checkusername = await User.findOne({username: req.body.username})
+      if(checkusername)
+      return res.status(400).send("Username already existed");
     let users = new User(req.body);
     await users.save();
     res.send(users);

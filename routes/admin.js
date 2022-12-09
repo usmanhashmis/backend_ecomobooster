@@ -7,7 +7,7 @@ var jwt = require("jsonwebtoken");
 router.post("/login", async function (req, res) {
     try {
       let check = await Admin_User.findOne({ admin_username: req.body.admin_username });
-      if (!check) return res.status(400).send("User with given Email not exist");
+      if (!check) return res.status(400).send("Username not exist");
   
       if (req.body.password != check.password)
         return res.status(400).send("password incorrect");

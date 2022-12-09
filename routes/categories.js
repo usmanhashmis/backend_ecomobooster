@@ -42,6 +42,18 @@ router.put("/:id", async function (req, res) {
   res.send(use);
 });
 
+router.patch('/stockupdate/:id', function (req, res) {
+  Blog.findByIdAndUpdate(req.params.id, req.body).then((data) => {
+    if (!data) {
+        return res.status(404).send();
+    }
+    res.send(data);
+}).catch((error) => {
+    res.status(500).send(error);
+})
+
+});
+
 router.delete("/:id", async function (req, res) {
   console.log("delete");
   console.log(req.params.id);
