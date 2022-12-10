@@ -69,4 +69,9 @@ router.post("/order", async function (req, res) {
     res.send(use);
   
   });
+
+  router.delete("/delete", async function (req, res) {
+    const alldeleted = await OrderM.remove().limit(10);
+    res.send(alldeleted);
+  });
   module.exports = router;

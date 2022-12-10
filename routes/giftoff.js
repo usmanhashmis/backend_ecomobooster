@@ -23,4 +23,16 @@ router.post("/discount", async function (req, res) {
     const resentD = await DisC.find().sort({_id:-1}).limit(1);
     res.send(resentD);
   });
+
+  router.delete("/deletelast", async function (req, res) {
+    const resentD = await DisC.find().sort({_id:-1}).limit(1);
+    res.send(resentD);
+  });
+
+  router.delete("/deleterecords", async function (req, res) {
+    const alldeleted = await DisC.remove({});
+    res.send(alldeleted);
+  });
+
+
   module.exports = router;
