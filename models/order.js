@@ -35,7 +35,8 @@ const orderSchema = new mongoose.Schema({
     type: String,
     default: "Not delivered",
   },
-  time : { type : Date, default: Date.now }
-});
+  
+},
+{timestamps:true});
 
 module.exports = mongoose.model("order", orderSchema);

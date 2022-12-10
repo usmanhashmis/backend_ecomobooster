@@ -25,6 +25,7 @@ router.post("/order", async function (req, res) {
     // console.log("idss",item);
       res.send(
         {getOrderMdata,
+          id:getOrderMdata._id
         
         });
     } catch (err) {
@@ -32,17 +33,32 @@ router.post("/order", async function (req, res) {
     }
   });
 /////for admin
-  router.get("/getorderdetail", async function (req, res) {
+  router.get("/getorderdetail/:number", async function (req, res) {
     console.log("product getting");
-    const getAllOrder = await OrderM.find();
-    res.send(getAllOrder);
+    let count=req.params.number;
+    let skip;
+    if(count==1){
+      skip=0
+    }
+    else{
+    skip=5*(count-1)};
+    const getAllOrder = await OrderM.find().skip(skip).limit(10);
+    const number=await OrderM.find();
+    const num=Math.floor(number.length/10);
+    res.send({records:getAllOrder,num});
   });
 
-  // router.get("/getorderbydate", async function (req, res) {
-  //   console.log("product getting");
-  //   const getAllOrder = await OrderM.find();
-  //   res.send(getAllOrder);
-  // });
+  router.post("/getorderbydate", async function (req, res) {
+    console.log("product getting by date",req.body);
+
+    let checkbydate = req.body.number;
+    
+    let d=new Date() - (checkbydate*60*60*24*1000)
+    const getAllOrder = await OrderM.find({createdAt:{$gte: d}});
+     
+    res.send(getAllOrder);
+    
+  });
  
 
   router.put("/status/:id", async function (req, res) {
