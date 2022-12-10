@@ -13,6 +13,7 @@ const orderSchema = new mongoose.Schema({
         type:String,
         required:true
       } ,
+      users:[]
 })
 
 module.exports = mongoose.model('discount', orderSchema)

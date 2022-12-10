@@ -13,10 +13,25 @@ router.post("/discount", async function (req, res) {
     }
   });
 /////for admin
-  router.get("/getalldiscounts", async function (req, res) {
-    console.log("product getting");
-    const getAlldisc = await DisC.find();
-    res.send(getAlldisc);
+  router.post("/getalldiscounts", async function (req, res) {
+    let username=req.body.username;
+    const getAlldisc = await DisC.find({promocode: req.body.promocode});
+  
+    if(getAlldisc){
+      var users=getAlldisc[0].users;
+      //console.log(users)
+      //console.log(username)
+      if(users.includes(username)){
+        console.log("inside iffff")
+        return res.status(400).send("already used")
+      }
+      else{
+        res.status(200).send("apply successfully")
+      }
+    }
+    else
+    res.status(400).send("Invalid Promo Code")
+   
   });
 /////for user
   router.get("/getdiscount", async function (req, res) {
