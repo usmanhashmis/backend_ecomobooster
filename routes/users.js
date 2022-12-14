@@ -64,7 +64,7 @@ router.post("/getcustomerbydate", async function (req, res) {
   let d=new Date() - (checkbydate*60*60*24*1000)
   const getAllCustomer = await User.find({createdAt:{$gte: d}});
    
-  res.send(getAllCustomr);
+  res.send(getAllCustomer);
   
 });
 
