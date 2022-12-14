@@ -62,6 +62,14 @@ router.post("/order", async function (req, res) {
     res.send(getAllOrder);
     
   });
+
+  ///single
+  router.post("/getsingleorder/:id", async function (req, res) {
+    console.log("product getting by date",req.body);
+    const getsingleOrder = await OrderM.findById(req.params.id);
+    res.send(getsingleOrder);
+    
+  });
  
 
   router.put("/status/:id", async function (req, res) {
