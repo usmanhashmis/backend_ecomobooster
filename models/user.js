@@ -7,9 +7,13 @@ var schema = new mongoose.Schema({
     require:true},
   email: { type:String,
     require:true},
-  password: { type:String,
+  password: { 
+    type:String,
     require:true},
-});
+  },
+    {timestamps:true}
+
+);
 var user = mongoose.model("User", schema);
 
 function validations(object) {

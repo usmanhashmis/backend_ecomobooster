@@ -44,4 +44,29 @@ router.get("/getall", async function (req, res) {
   const use = await User.find();
   res.send(use);
 });
+
+router.get("/getcustomerdetail/:number", async function (req, res) {
+    
+  let count=req.params.number?req.params.number:0;
+  let skip=count*10
+  
+  const getAllcuatomer = await User.find().skip(skip).limit(10);
+  const number=await User.find();
+  const num=Math.floor(number.length/10);
+  res.send({records:getAllcuatomer,num});
+});
+
+router.post("/getcustomerbydate", async function (req, res) {
+  console.log("product getting by date",req.body);
+
+  let checkbydate = req.body.number;
+  
+  let d=new Date() - (checkbydate*60*60*24*1000)
+  const getAllCustomer = await User.find({createdAt:{$gte: d}});
+   
+  res.send(getAllCustomr);
+  
+});
+
+
 module.exports = router;

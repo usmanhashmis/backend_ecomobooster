@@ -12,21 +12,21 @@ router.post("/discount", async function (req, res) {
       console.log(err);
     }
   });
-/////for admin
+/////for user
   router.post("/getalldiscounts", async function (req, res) {
     let username=req.body.username;
-    const getAlldisc = await DisC.find({promocode: req.body.promocode});
-  
+    const getAlldisc = await DisC.findOne({promocode: req.body.promocode});
+   
     if(getAlldisc){
       var users=getAlldisc[0].users;
       //console.log(users)
       //console.log(username)
       if(users.includes(username)){
         console.log("inside iffff")
-        return res.status(400).send("already used")
+        return res.status(400).send("Already used")
       }
       else{
-        res.status(200).send("apply successfully")
+        res.status(200).send("Apply successfully")
       }
     }
     else
