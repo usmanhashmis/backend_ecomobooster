@@ -65,7 +65,6 @@ router.post("/order", async function (req, res) {
 
   ///single
   router.post("/getsingleorder/:id", async function (req, res) {
-    console.log("product getting by date",req.body);
     const getsingleOrder = await OrderM.findById(req.params.id);
     res.send(getsingleOrder);
     

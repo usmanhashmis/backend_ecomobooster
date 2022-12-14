@@ -18,7 +18,7 @@ router.post("/discount", async function (req, res) {
     const getAlldisc = await DisC.findOne({promocode: req.body.promocode});
    
     if(getAlldisc){
-      var users=getAlldisc[0].users;
+      var users=getAlldisc.users;
       //console.log(users)
       //console.log(username)
       if(users.includes(username)){

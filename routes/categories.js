@@ -39,7 +39,6 @@ router.get("/:id", async function (req, res) {
   res.send(use);
 });
 
-
 router.put("/:id", async function (req, res) {
   console.log("updating");
   console.log(req.body);
