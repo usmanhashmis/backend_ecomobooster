@@ -51,6 +51,13 @@ router.post("/order", async function (req, res) {
     res.send({records:getAllOrder,num});
   });
 
+  ////for counting
+  router.get("/getorderdetail", async function (req, res) {
+    
+    const getAllOrder = await OrderM.find();
+    res.send(getAllOrder);
+  });
+
   router.post("/getorderbydate", async function (req, res) {
     console.log("product getting by date",req.body);
 
@@ -61,7 +68,7 @@ router.post("/order", async function (req, res) {
      
     res.send(getAllOrder);
     
-  });
+  }); 
 
   ///single
   router.post("/getsingleorder/:id", async function (req, res) {
