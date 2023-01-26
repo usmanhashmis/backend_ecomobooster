@@ -60,21 +60,40 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-mongoose
-.connect(process.env.ADMIN_URI,{  
-    useUnifiedTopology: true,
-    })
-  .then(() => {
-    console.log("connect succes");
-    app.set('port', process.env.PORT || 3000)
-    app.listen(app.get('port'), () => {
-      console.log(`Port: ${app.get('port')}`);
+// app.set('port', process.env.PORT || 3000)
+// app.listen(app.get('port'), () => {
+//   console.log(`Port: ${app.get('port')}`);
+// })
+
+const PORT = process.env.PORT || 3000
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.ADMIN_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+}
+
+connectDB().then(() => {
+  app.listen(PORT, () => {
+      console.log("listening for requests");
   })
-  })
-  .catch((err) => {
-    if(err){ console.error(err); return false;}
-    console.log("error:",err);
-  });
+})
+
+// mongoose
+// .connect(process.env.ADMIN_URI,{  
+//     useUnifiedTopology: true,
+//     })
+//   .then(() => {
+//     console.log("connect succes");
+  
+//   })
+//   .catch((err) => {
+//     if(err){ console.error(err); return false;}
+//     console.log("error:",err);
+//   });
 
 
 
