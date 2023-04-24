@@ -68,7 +68,7 @@ app.use(function (err, req, res, next) {
 const PORT = process.env.PORT || 3000
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.ADMIN_URI);
+    const conn = await mongoose.connect("mongodb+srv://usmanhashmis:usa09876@cluster0.c1ephni.mongodb.net/storevalues?retryWrites=true&w=majority");
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.log(error);
