@@ -75,12 +75,12 @@ const connectDB = async () => {
     process.exit(1);
   }
 }
-
 connectDB().then(() => {
   app.listen(PORT, () => {
-      console.log("listening for requests");
+      console.log("listening for requests:", PORT);
   })
 })
+
 
 // mongoose
 // .connect(process.env.ADMIN_URI,{  
