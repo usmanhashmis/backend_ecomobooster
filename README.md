@@ -1,2 +1,2 @@
 # backend ecomobooster
-base URL : https://drab-cyan-fossa-kilt.cyclic.app/
+base URL : https://electric-blue-rabbit-coat.cyclic.app/
