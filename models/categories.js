@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var schema = new mongoose.Schema({
-  category:String,
+  categoryWise:String,
   product_name:{
     type:String,
     required:true
