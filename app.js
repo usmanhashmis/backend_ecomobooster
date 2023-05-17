@@ -79,6 +79,8 @@ connectDB().then(() => {
   app.listen(PORT, () => {
       console.log("listening for requests:", PORT);
   })
+}).catch((e)=>{
+  console.log("error:" , e)
 })
 
 
