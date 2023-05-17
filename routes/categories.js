@@ -23,7 +23,7 @@ router.post("/addproduct", async function (req, res) {
  
 router.get("/getproduct", async function (req, res) {
   console.log("product getting");
-  const getproduct = await Categ.find().limit(5);
+  const getproduct = await Categ.find();
   res.send(getproduct);
 });
 
