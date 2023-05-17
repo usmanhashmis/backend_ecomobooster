@@ -13,6 +13,7 @@ router.post("/addproduct", async function (req, res) {
     }
     else{
     var categ = new Categ(req.body);
+      console.log("data:" , categ)
     await categ.save();
     res.send(categ);}
   }
