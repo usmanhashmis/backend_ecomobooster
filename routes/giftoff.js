@@ -26,7 +26,14 @@ router.post("/discount", async function (req, res) {
         return res.status(400).send("Already used")
       }
       else{
-        res.status(200).send("Apply successfully")
+             res.send({
+                 amount: getAlldis.amount,
+                 promocode:getAlldis.promocode,
+                 coin:getAlldis.coin,
+                 alerts:"Apply successfully"
+    
+    });
+      //  res.status(200).send("Apply successfully")
       }
     }
     else
