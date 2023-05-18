@@ -33,7 +33,7 @@ router.post("/login", async function (req, res) {
 
     res.send({
       username: check.username,
-       email: check.email
+       email: check.email,
       token,
     });
   } catch (err) {
